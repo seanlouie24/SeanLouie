@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seans Web Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="fanta.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="/">Sean L</a>
+      <nav>
+        <a target="_blank" href="https://github.com/seanlouie24"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/sean-louie-8a4a00298/"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="intro-header">
+          <h1>Olá! I'm Sean...</h1>
+          <p>Software Developer</p>
+        </div>
+        <h5 class="intro-description">
+          A 3rd year computing science student at sfu. Based in Vancouver, I
+          love to play basketball, watch movies, and build fun and useful web
+          applications.
+        </h5>
+        <div class="links-container">
+          <i class="fa-solid link-arrow fa-arrow-right"></i>
+          <a href="mailto:sdlouie24@gmail.com">Email me</a>
+          <a target="_blank" href="https://github.com/seanlouie24">Github</a>
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/sean-louie-8a4a00298/"
+            >Linkedin</a
+          >
+        </div>
+
+        <div id="play-game">
+          <button onclick="playGame()">Play game???</button>
+        </div>
+        <div style="display: none" class="color-div">
+          <h4>Pick a colour</h4>
+          <p style="display: none">Great... now it's ruined!</p>
+          <input
+            type="color"
+            id="color-picker"
+            onchange="changeColor()"
+            value="#0084ff"
+          />
+          <button style="display: none" onclick="resetColor()">Reset</button>
+        </div>
+      </section>
+      <section>
+        <h2>Skills</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>Technologies</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>JavaScript and TypeScript</td>
+              <td>React | Prisma</td>
+            </tr>
+            <tr>
+              <td>Python</td>
+              <td>Data analysis | Data visualization</td>
+            </tr>
+            <tr>
+              <td>Java</td>
+              <td>Data analysis | Data visualization | Java FX</td>
+            </tr>
+            <tr>
+              <td>Web</td>
+              <td>FantaCSS | GIT | CI/CD</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Latest Projects</h2>
+        <div class="cards-grid">
+          <div class="project-card">
+            <div>
+              <p>September 2024 - December 2024</p>
+              <h4>SFU Hub</h4>
+              <div class="tech-list">
+                <div class="card-button-secondary">
+                  <p>TypeScript</p>
+                </div>
+                <div class="card-button-secondary">
+                  <p>Prisma with SQLite</p>
+                </div>
+                <div class="card-button-secondary">
+                  <p>Unit Tests</p>
+                </div>
+                <div class="card-button-secondary">
+                  <p>Agile</p>
+                </div>
+              </div>
+              <p>
+                SFU Hub is your one-stop destination for everything SFU,
+                bringing together essential information and resources in one
+                convenient place.
+              </p>
+              <div class="project-links">
+                <a target="_blank" href="https://sfuhub.ca/">Live</a>
+                <a
+                  target="_blank"
+                  href="https://github.sfu.ca/kaa80/SFU-HUB-CMPT276"
+                  >Github</a
+                >
+              </div>
+            </div>
+            <div class="img-div">
+              <img
+                class="big-img"
+                src="/1_web_portfolio/public/SFU Hub Thumbnail.png"
+                alt="SFU Hub Thumbnail"
+              />
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div>
+              <p>September 2024 - December 2024</p>
+              <h4>SFU Hub</h4>
+              <div class="tech-list">
+                <div class="card-button-secondary">
+                  <p>TypeScript</p>
+                </div>
+                <div class="card-button-secondary">
+                  <p>Prisma with SQLite</p>
+                </div>
+                <div class="card-button-secondary">
+                  <p>Unit Tests</p>
+                </div>
+                <div class="card-button-secondary">
+                  <p>Agile</p>
+                </div>
+              </div>
+              <p>
+                SFU Hub is your one-stop destination for everything SFU,
+                bringing together essential information and resources in one
+                convenient place.
+              </p>
+              <div class="project-links">
+                <a target="_blank" href="https://sfuhub.ca/">Live</a>
+                <a
+                  target="_blank"
+                  href="https://github.sfu.ca/kaa80/SFU-HUB-CMPT276"
+                  >Github</a
+                >
+              </div>
+            </div>
+            <div class="img-div">
+              <img
+                class="big-img"
+                src="/1_web_portfolio/public/SFU Hub Thumbnail.png"
+                alt="SFU Hub Thumbnail"
+              />
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div>
+              <p>January 2024</p>
+              <h4>PickUp</h4>
+              <div class="tech-list">
+                <div class="card-button-secondary">
+                  <p>React</p>
+                </div>
+                <div class="card-button-secondary">
+                  <p>Google Maps API</p>
+                </div>
+                <div class="card-button-secondary">
+                  <p>Chakra UI</p>
+                </div>
+                <div class="card-button-secondary">
+                  <p>JavaScript</p>
+                </div>
+              </div>
+              <p>
+                Pickup makes it easy for students and individuals on the UBC
+                Vancouver campus to discover and join local pickup sporting
+                events, all through an interactive and user-friendly web
+                application.
+              </p>
+              <div class="project-links">
+                <a
+                  target="_blank"
+                  href="https://github.com/MatthewAnder/nwhacks-project"
+                  >Github</a
+                >
+              </div>
+            </div>
+            <div class="img-div">
+              <img
+                class="big-img"
+                src="/1_web_portfolio/public/Pickup Thumbnail.png"
+                alt="SFU Hub Thumbnail"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        By <a href="">Sean Louie</a> feel free to contact me at
+        <a href="mailto:sdlouie24@gmail.com">sdlouie24@gmail.com</a>
+      </p>
+    </footer>
+    <script>
+      // This is where we create the interactiviity for color game
+
+      // 1. Select all the html elements so that we can later manupulater them
+      const body = document.querySelector("body");
+      const colorInput = document.getElementById("color-picker");
+      const colorDiv = document.querySelector(".color-div");
+      const hiddenText = document.querySelector(".color-div p");
+      const resetBtn = document.querySelector(".color-div button");
+      const playBtn = document.getElementById("play-game");
+
+      // 2. create the functions
+
+      function playGame() {
+        colorDiv.style.display = "block";
+        playBtn.style.display = "none";
+      }
+
+      function changeColor() {
+        const selectedColor = colorInput.value;
+        body.style.background = selectedColor;
+        resetBtn.style.display = "block";
+        hiddenText.style.display = "block";
+        colorInput.style.display = "none";
+      }
+
+      function resetColor() {
+        body.style.background = "white";
+        colorInput.style.display = "block";
+        playBtn.style.display = "block";
+
+        hiddenText.style.display = "none";
+        resetBtn.style.display = "none";
+        colorDiv.style.display = "none";
+      }
+
+      // 3. is to assign the functions to the buttons by adding
+      //their function call to the actual elemements (done in the above html code)
+    </script>
+  </body>
+</html>
