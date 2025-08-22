@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Seans Web Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="fanta.css" />
+    <title>Sean Louie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="public/icon.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -14,236 +14,182 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body>
-    <header>
-      <a href="/">Sean L</a>
-      <nav>
-        <a target="_blank" href="https://github.com/seanlouie24"
-          ><i class="fa-brands fa-github"></i
-        ></a>
-        <a target="_blank" href="https://www.linkedin.com/in/sean-louie/"
-          ><i class="fa-brands fa-linkedin"></i
-        ></a>
+  <body class="bg-gray-900 text-gray-100 font-sans">
+    <!-- Header -->
+    <header class="flex items-center justify-between max-w-6xl mx-auto px-6 py-4 border-b border-gray-700 sticky top-0 bg-gray-900 z-50">
+      <!-- Logo -->
+      <a href="/" class="text-xl font-bold tracking-wide hover:text-teal-400 transition">Sean L</a>
+      
+      <!-- Navigation -->
+      <nav class="flex items-center space-x-6 text-sm font-medium">
+        <!-- Internal links -->
+        <a href="#skills" class="px-3 py-2 rounded-lg hover:bg-gray-800 transition">Skills</a>
+        <a href="#projects" class="px-3 py-2 rounded-lg hover:bg-gray-800 transition">Projects</a>
+  
+        <!-- External icons -->
+        <a target="_blank" href="https://github.com/seanlouie24" class="text-xl hover:text-gray-400">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a target="_blank" href="https://www.linkedin.com/in/sean-louie/" class="text-xl hover:text-teal-400">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
       </nav>
     </header>
-    <main>
-      <section>
-        <div class="intro-header">
-          <h1>Olá! I'm Sean...</h1>
-          <p>Software Developer</p>
-        </div>
-        <h5 class="intro-description">
-          A 3rd year computing science student at sfu. Based in Vancouver, I
-          love to play basketball, watch movies, and build fun and practical
-          software applications.
-        </h5>
-        <div class="links-container">
-          <i class="fa-solid link-arrow fa-arrow-right"></i>
-          <a href="mailto:sdlouie24@gmail.com">Email me</a>
-          <a target="_blank" href="https://github.com/seanlouie24">Github</a>
-          <a target="_blank" href="https://www.linkedin.com/in/sean-louie/"
-            >Linkedin</a
+  
+    <main class="max-w-6xl mx-auto px-6">
+      <!-- Intro -->
+      <section class="text-center py-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold">Sean Louie</h1>
+        <p class="mt-2 text-lg text-gray-400">Software Developer</p>
+        <p class="mt-4 max-w-2xl mx-auto text-gray-300">
+          A 3rd year computing science student at Simon Fraser University specializing in full-stack web development. Based in Vancouver, I love to play basketball and weightlift.
+        </p>
+        <div id="skills" class="mt-6 flex flex-wrap justify-center gap-4">
+          <a
+            href="mailto:sdlouie24@gmail.com"
+            class="px-5 py-2 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition"
+            >Email me</a
+          >
+          <a
+            target="_blank"
+            href="https://github.com/seanlouie24"
+            class="px-5 py-2 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition"
+            >GitHub</a
+          >
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/sean-louie/"
+            class="px-5 py-2 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition"
+            >LinkedIn</a
           >
         </div>
+      </section>
 
-        <div id="play-game">
-          <button onclick="playGame()">Play game???</button>
-        </div>
-        <div style="display: none" class="color-div">
-          <h4>Pick a colour</h4>
-          <p style="display: none">Great... now it's ruined!</p>
-          <input
-            type="color"
-            id="color-picker"
-            onchange="changeColor()"
-            value="#0084ff"
-          />
-          <button style="display: none" onclick="resetColor()">Reset</button>
+      <!-- Skills -->
+      <section class="py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Skills
+          <div class="mt-2 mx-auto w-20 h-1 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full"></div>
+        </h2>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">Python</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">Java</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">C++</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">JavaScript</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">TypeScript</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">React.js</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">Node.js</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">Express.js</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">Prisma</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">MongoDB</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">SQLite</span>
+        <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-teal-600 hover:text-white hover:scale-105 transition">Git</span>
         </div>
       </section>
 
-      <section>
-        <h2>Projects</h2>
-        <div class="cards-grid">
-          <div class="project-card">
-            <div>
-              <p>July 2025 - August 2025</p>
-              <h4>RepIt</h4>
-              <div class="tech-list">
-                <div class="card-button-secondary">
-                  <p>MongoDB</p>
+      <!-- Projects -->
+      <section id="projects" class="py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Projects
+          <div class="mt-2 mx-auto w-32 h-1 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full"></div>
+        </h2>
+        <div class="grid gap-8 md:grid-cols-2">
+          
+          <!-- RepIt -->
+          <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:scale-[1.02] hover:border-teal-500 transition-transform duration-300">
+            <img src="public/RepIt_Thumbnail.png" alt="RepIt Thumbnail" class="h-48 w-full object-cover">
+            <div class="p-6 flex flex-col justify-between flex-1">
+              <div>
+                <p class="text-sm text-gray-400">July 2025 - August 2025</p>
+                <h4 class="text-xl font-semibold mt-2">RepIt</h4>
+                
+                <!-- Tech stack -->
+                <div class="flex flex-wrap gap-2 mt-3">
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">MongoDB</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Express.js</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">React.js</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Node.js</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">TailwindCSS</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Vercel</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Render</span>
                 </div>
-                <div class="card-button-secondary">
-                  <p>Express.js</p>
-                </div>
-                <div class="card-button-secondary">
-                  <p>React.js</p>
-                </div>
-                <div class="card-button-secondary">
-                  <p>Node.js</p>
-                </div>
-                <div class="card-button-secondary">
-                  <p>Tailwind CSS</p>
-                </div>
-                <div class="card-button-secondary">
-                  <p>Vercel</p>
-                </div>
-                <div class="card-button-secondary">
-                  <p>Render</p>
-                </div>
+
+                <p class="mt-4 text-gray-300">
+                  RepIT is a web application designed to help users log and manage workouts, create new sessions, review past progress, and track total exercises completed.
+                </p>
               </div>
-              <p>
-                RepIT is a web application designed to help users log and manage
-                their workouts, offering the ability to create new workouts,
-                review past sessions, and keep track of total exercises
-                completed.
-              </p>
-              <div class="project-links">
-                <a target="_blank" href="https://repitapp.vercel.app/">Live</a>
-                <a target="_blank" href="https://github.com/seanlouie24/RepIt"
-                  >Github</a
-                >
+              <div class="mt-4 flex gap-4">
+                <a target="_blank" href="https://repitapp.vercel.app/" class="text-teal-400 hover:underline">Live</a>
+                <a target="_blank" href="https://github.com/seanlouie24/RepIt" class="text-teal-400 hover:underline">GitHub</a>
               </div>
-            </div>
-            <div class="img-div">
-              <img
-                class="big-img"
-                src="public/RepIt_Thumbnail.png"
-                alt="RepIt Thumbnail"
-              />
-            </div>
-          </div>
-          <div class="project-card">
-            <div>
-              <p>September 2024 - December 2024</p>
-              <h4>SFU Hub</h4>
-              <div class="tech-list">
-                <div class="card-button-secondary">
-                  <p>TypeScript</p>
-                </div>
-                <div class="card-button-secondary">
-                  <p>Prisma with SQLite</p>
-                </div>
-                <div class="card-button-secondary">
-                  <p>Unit Tests</p>
-                </div>
-                <div class="card-button-secondary">
-                  <p>Agile</p>
-                </div>
-              </div>
-              <p>
-                SFU Hub is your one-stop destination for everything SFU,
-                bringing together essential information and resources in one
-                convenient place.
-              </p>
-              <div class="project-links">
-                <a target="_blank" href="https://sfuhub.ca/">Live</a>
-                <a
-                  target="_blank"
-                  href="https://github.sfu.ca/kaa80/SFU-HUB-CMPT276"
-                  >Github</a
-                >
-                <a target="_blank" href="SFUHub_RMFile.pdf"
-                  >SFU Hub README File</a
-                >
-              </div>
-            </div>
-            <div class="img-div">
-              <img
-                class="big-img"
-                src="public/SFU_Hub_Thumbnail.png"
-                alt="SFU Hub Thumbnail"
-              />
             </div>
           </div>
 
-          <div class="project-card">
-            <div>
-              <p>January 2024</p>
-              <h4>PickUp (NW Hacks)</h4>
-              <div class="tech-list">
-                <div class="card-button-secondary">
-                  <p>React</p>
+          <!-- SFU Hub -->
+          <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:scale-[1.02] hover:border-teal-500 transition-transform duration-300">
+            <img src="public/SFU_Hub_Thumbnail.png" alt="SFU Hub Thumbnail" class="h-48 w-full object-cover">
+            <div class="p-6 flex flex-col justify-between flex-1">
+              <div>
+                <p class="text-sm text-gray-400">September 2024 - December 2024</p>
+                <h4 class="text-xl font-semibold mt-2">SFU Hub</h4>
+                
+                <!-- Tech stack -->
+                <div class="flex flex-wrap gap-2 mt-3">
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">TypeScript</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Prisma + SQLite</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Unit Tests</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Agile</span>
                 </div>
-                <div class="card-button-secondary">
-                  <p>Google Maps API</p>
-                </div>
-                <div class="card-button-secondary">
-                  <p>Chakra UI</p>
-                </div>
-                <div class="card-button-secondary">
-                  <p>JavaScript</p>
-                </div>
+
+                <p class="mt-4 text-gray-300">
+                  SFU Hub is your one-stop destination for everything SFU, bringing together essential information and resources in one convenient place.
+                </p>
               </div>
-              <p>
-                Pickup makes it easy for students and individuals on the UBC
-                Vancouver campus to discover and join local pickup sporting
-                events, all through an interactive and user-friendly web
-                application.
-              </p>
-              <div class="project-links">
-                <a
-                  target="_blank"
-                  href="https://github.com/MatthewAnder/nwhacks-project"
-                  >Github</a
-                >
+              <div class="mt-4 flex flex-wrap gap-4">
+                <a target="_blank" href="https://sfuhub.ca/" class="text-teal-400 hover:underline">Live</a>
+                <a target="_blank" href="https://github.sfu.ca/kaa80/SFU-HUB-CMPT276" class="text-teal-400 hover:underline">GitHub</a>
+                <a target="_blank" href="SFUHub_RMFile.pdf" class="text-teal-400 hover:underline">README</a>
               </div>
             </div>
-            <div class="img-div">
-              <img
-                class="big-img"
-                src="public/Pickup_Thumbnail.png"
-                alt="SFU Hub Thumbnail"
-              />
+          </div>
+
+          <!-- PickUp -->
+          <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:scale-[1.02] hover:border-teal-500 transition-transform duration-300">
+            <img src="public/Pickup_Thumbnail.png" alt="Pickup Thumbnail" class="h-48 w-full object-cover">
+            <div class="p-6 flex flex-col justify-between flex-1">
+              <div>
+                <p class="text-sm text-gray-400">January 2024</p>
+                <h4 class="text-xl font-semibold mt-2">PickUp (NW Hacks)</h4>
+                
+                <!-- Tech stack -->
+                <div class="flex flex-wrap gap-2 mt-3">
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">React</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Google Maps API</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Chakra UI</span>
+                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">JavaScript</span>
+                </div>
+
+                <p class="mt-4 text-gray-300">
+                  Pickup makes it easy for students on the UBC Vancouver campus to discover and join local pickup sporting events, through an interactive web app.
+                </p>
+              </div>
+              <div class="mt-4 flex gap-4">
+                <a target="_blank" href="https://github.com/MatthewAnder/nwhacks-project" class="text-teal-400 hover:underline">GitHub</a>
+              </div>
             </div>
           </div>
         </div>
       </section>
-    </main>
-    <footer>
+
+
+    <!-- Footer -->
+    <footer class="mt-12 py-6 border-t border-gray-700 text-center text-sm text-gray-400">
       <p>
-        By <a href="">Sean Louie</a> feel free to contact me at
-        <a href="mailto:sdlouie24@gmail.com">sdlouie24@gmail.com</a>
+        By <span class="font-semibold text-gray-200">Sean Louie</span>. Contact me at
+        <a
+          href="mailto:sdlouie24@gmail.com"
+          class="text-teal-400 hover:underline"
+          >sdlouie24@gmail.com</a
+        >
       </p>
     </footer>
-    <script>
-      // This is where we create the interactiviity for color game
-
-      // 1. Select all the html elements so that we can later manupulater them
-      const body = document.querySelector("body");
-      const colorInput = document.getElementById("color-picker");
-      const colorDiv = document.querySelector(".color-div");
-      const hiddenText = document.querySelector(".color-div p");
-      const resetBtn = document.querySelector(".color-div button");
-      const playBtn = document.getElementById("play-game");
-
-      // 2. create the functions
-
-      function playGame() {
-        colorDiv.style.display = "block";
-        playBtn.style.display = "none";
-      }
-
-      function changeColor() {
-        const selectedColor = colorInput.value;
-        body.style.background = selectedColor;
-        resetBtn.style.display = "block";
-        hiddenText.style.display = "block";
-        colorInput.style.display = "none";
-      }
-
-      function resetColor() {
-        body.style.background = "white";
-        colorInput.style.display = "block";
-        playBtn.style.display = "block";
-
-        hiddenText.style.display = "none";
-        resetBtn.style.display = "none";
-        colorDiv.style.display = "none";
-      }
-
-      // 3. is to assign the functions to the buttons by adding
-      //their function call to the actual elemements (done in the above html code)
-    </script>
   </body>
 </html>
