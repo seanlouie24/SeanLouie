@@ -1,0 +1,123 @@
+/* General Page Styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://www.sfu.ca/content/sfu/main/jcr:content/main_content/textimage_12616661/image.img.1280.high.png/1724772825036.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.65; /* Apply opacity only to the image */
+  z-index: 1; /* Behind the text */
+}
+
+.hero-text h1{
+  color: white;
+}
+.hero-text {
+  position: relative;
+  z-index: 2; /* Ensure text appears above the image */
+  background-color: rgb(166, 25, 46, 0.8);
+  color: white;
+  padding: 70px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.hero h1 {
+  font-size: 50px;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Image Grid */
+.grid-image4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 40px;
+  padding: 4rem;
+  max-width: 98.5%;
+  margin: 0 auto;
+  
+}
+
+.grid-item4 {
+  position: relative; /* Ensure the text container is positioned relative to the image */
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+}
+
+.image1, .image2, .image3, .image4 {
+  height: 230px;
+  background-size: cover; /* ensures the image covers the entire div */
+  background-position: center; /* centers the image */
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image1 {
+  height: 250px;
+}
+
+.grid-item4:hover .image1,
+.grid-item4:hover .image2,
+.grid-item4:hover .image3,
+.grid-item4:hover .image4 {
+  transform: scale(1.05); /* Slightly scale up the image */
+  opacity: 0.8; /* Increase opacity */
+}
+
+.image1, .image2, .image3, .image4 {
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Add transition for smooth effect */
+}
+
+.image-text4 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(166, 25, 46); /* Red footer banner */
+  color: white; /* White text */
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.5rem; /* Adjust the font size as needed */
+  padding: 3px 10px;
+  box-sizing: border-box;
+  z-index: 2; /* Ensure the text is above the image */
+}
+
+.grid-item4 a {
+  text-decoration: none;
+  color: #333;
+}
+
+.grid-item4 a:hover .image-placeholder {
+  background-color: #bbb;
+}

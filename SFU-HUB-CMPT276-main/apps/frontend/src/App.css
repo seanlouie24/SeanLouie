@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+  font-family: "Countach";
+  src: local("Countach"),
+    url("./Components/fonts/Countach/Countach-Bold-TRIAL-BF63c5f2076e572.otf") format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Times";
+  src: local("Times"),
+    url("./Components/fonts/TimesRegular/TimesRegular.ttf") format("opentype");
+  font-weight: normal;
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.home, .resources, .profile, .transportation, .dining, .blog{
+  display: flex;
+  height: 90vh;
+  font-size: 12px;
+}
+
+
+.home, .resources, .profile, .transportation, .dining, .blog, h1{
+  font-family: 'Countach';
+  font-style: normal;
+  font-size: 50px;
+  text-transform: uppercase;
+  color: rgb(204,6,51);
+  letter-spacing: 1px;
+}
+
+.home, .resources, .profile, .transportation, .dining, .blog, h2{
+  font-family: 'Barlow';
+  font-style: normal;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.home, .resources, .profile, .transportation, .dining, .blog, h3, label{
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-size: 20px;
+}
+
+.home, .resources, .profile, .transportation, .dining, .blog, p{
+  font-family: 'TimesRegular';
+  font-style: normal;
+  font-size: 16px;
+  text-transform: none;
+}

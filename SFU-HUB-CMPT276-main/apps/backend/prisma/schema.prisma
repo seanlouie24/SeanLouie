@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model event {
+  id     String   @id @unique @default(uuid())
+  allDay Boolean?
+  start  DateTime
+  end    DateTime
+  title  String
+  url    String?
+  color  String?
+  tags   String
+}
+
+model resources {
+  id          String @id
+  title       String
+  description String
+  link        String
+  category    String
+}
+
+model dining {
+  id          String  @id @default(uuid())
+  name        String
+  image       String
+  address     String
+  category    String
+  contact     String?
+  description String?
+  website     String?
+  hours       String?
+  menu        String?
+}
+
+model bus_stops {
+  stopId     String  @id @unique
+  stopName   String
+  stopNumber String
+  stops      stops[]
+}
+
+model stops {
+  time    Int
+  stopId  String
+  busStop bus_stops @relation(fields: [stopId], references: [stopId])
+  tripId  String
+  trip    trips     @relation(fields: [tripId], references: [tripId])
+
+  @@id([tripId, stopId, time])
+}
+
+model trips {
+  tripId      String  @id @unique
+  routeId     String
+  direction   String
+  destination String
+  routeCode   String?
+  routeName   String
+  serviceId   String
+  monday      Boolean
+  tuesday     Boolean
+  wednesday   Boolean
+  thursday    Boolean
+  friday      Boolean
+  saturday    Boolean
+  sunday      Boolean
+  stops       stops[]
+}

@@ -1,0 +1,48 @@
+{
+    "name": "backend",
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "test:types": "tsc --noEmit",
+        "lint": "eslint \"src/**/*.ts\"",
+        "start": "npm run build && npm run run",
+        "run": "node dist/server.js",
+        "generate:prisma": "prisma generate",
+        "generate:openapi": "openapi-typescript ./api/openapi.json -o ./src/@types/openapi.d.ts",
+        "generate:transit": "npm run build && node dist/generateTransitSchedule.js",
+        "test": "vitest run"
+    },
+    "dependencies": {
+        "@prisma/client": "^5.20.0",
+        "cors": "^2.8.5",
+        "csv-parser": "^3.0.0",
+        "express": "^4.18.2",
+        "express-openapi-validator": "^5.3.7",
+        "gtfs-realtime-bindings": "^1.1.1",
+        "prisma": "^5.9.1",
+        "strip-bom-stream": "^5.0.0",
+        "swagger-ui-express": "^5.0.0"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    },
+    "devDependencies": {
+        "@swc/cli": "^0.4.1-nightly.20240914",
+        "@swc/core": "^1.7.28",
+        "@tsconfig/strictest": "^2.0.5",
+        "@types/cors": "^2.8.17",
+        "@types/swagger-ui-express": "^4.1.6",
+        "@typescript-eslint/eslint-plugin": "^5.62.0",
+        "@typescript-eslint/parser": "^5.62.0",
+        "eslint": "^8.56.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-airbnb-typescript": "^17.1.0",
+        "eslint-plugin-import": "^2.29.1",
+        "openapi-typescript": "^7.4.1",
+        "prettier": "3.3.3",
+        "sinon": "^19.0.2",
+        "typescript": "^5.6.2",
+        "vitest": "^2.1.3"
+    }
+}

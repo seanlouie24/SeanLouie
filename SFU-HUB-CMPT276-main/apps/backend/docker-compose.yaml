@@ -1,0 +1,15 @@
+name: sfuhub
+services:
+  sfuhub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sfuhub-api
+    env_file:
+      - ./.env
+    expose:
+      - 3000
+    image: sfuhub-api:latest
+    restart: on-failure:5
+    volumes:
+      - ~/database.db:/app/database.db

@@ -1,0 +1,591 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SFU HUB",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/license/mit/"
+    },
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.sfuhub.ca",
+      "description": "Production"
+    },
+    {
+      "url": "https://staging.sfuhub.ca",
+      "description": "Staging"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Development"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Calendar",
+      "description": "A schedule of events from SFU, SFSS, clubs, fraternities, and other groups"
+    },
+    {
+      "name": "Resources",
+      "description": "Endpoints related to resources"
+    },
+    {
+      "name": "Dining",
+      "description": "Endpoints related to Dining options"
+    },
+    {
+      "name": "Transit",
+      "description": "Endpoints related to Transit options"
+    }
+  ],
+  "paths": {
+    "/calendar/events": {
+      "get": {
+        "tags": [
+          "Calendar"
+        ],
+        "summary": "Get a feed of calendar events",
+        "description": "Returns a calendar feed with a subset of the format of https://fullcalendar.io/docs/event-object",
+        "operationId": "getEvents",
+        "parameters": [
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Filters to events that start after this date",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "Filters to events that end before this date",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "Filters to events with any of the provided tags, comma delimited",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "The request has failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AccessToken": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Calendar"
+        ],
+        "summary": "Add a calendar event",
+        "description": "Adds a calendar event of the format of https://fullcalendar.io/docs/event-object",
+        "operationId": "postEvent",
+        "requestBody": {
+          "description": "The event",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventPost"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "The request has failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AccessToken": []
+          }
+        ]
+      }
+    },
+    "/dining/restaurants": {
+      "get": {
+        "tags": [
+          "Dining"
+        ],
+        "summary": "Get all Restaurants",
+        "description": "Retrieve a list of all Restaurants",
+        "operationId": "getRestaurants",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Restaurants"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "The request has failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AccessToken": []
+          }
+        ]
+      }
+    },
+    "/resources": {
+      "get": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "Get all resources",
+        "description": "Retrieve a list of all resources",
+        "operationId": "getResources",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Resource"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "The request has failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AccessToken": []
+          }
+        ]
+      }
+    },
+    "/transit": {
+      "get": {
+        "tags": [
+          "Transit"
+        ],
+        "summary": "Get transit stops and schedules",
+        "description": "Retrieve a list of transit stops and the scheduled arrival times for each route.",
+        "operationId": "getTransit",
+        "parameters": [
+          {
+            "name": "stopNumbers",
+            "in": "query",
+            "description": "Filter by stop number, comma delimited list",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TransitStop"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "The request has failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AccessToken": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EventPost": {
+        "required": [
+          "start",
+          "end",
+          "title",
+          "tags"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "allDay": {
+            "type": "boolean"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Event": {
+        "required": [
+          "id",
+          "start",
+          "end",
+          "title",
+          "tags"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "allDay": {
+            "type": "boolean"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Resource": {
+        "required": [
+          "id",
+          "title",
+          "link",
+          "category"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the resource"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the resource"
+          },
+          "link": {
+            "type": "string",
+            "description": "Link to the specific resource"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the resource"
+          }
+        }
+      },
+      "Restaurants": {
+        "required": [
+          "id",
+          "name",
+          "image",
+          "address",
+          "contact",
+          "category",
+          "description",
+          "website",
+          "hours",
+          "menu"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the dining option"
+          },
+          "image": {
+            "type": "string",
+            "description": "URL to an image of the restaurant"
+          },
+          "address": {
+            "type": "string",
+            "description": "Address of the dining location"
+          },
+          "category": {
+            "type": "string",
+            "description": "Location of the restaurant relative to sfu"
+          },
+          "contact": {
+            "type": "string",
+            "description": "Contact information"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the dining option"
+          },
+          "website": {
+            "type": "string",
+            "description": "Website URL"
+          },
+          "hours": {
+            "type": "string",
+            "description": "Operating hours"
+          },
+          "menu": {
+            "type": "string",
+            "description": "URL to the menu image or page"
+          }
+        }
+      },
+      "TransitStop": {
+        "required": [
+          "stopNumber",
+          "stopName",
+          "stops"
+        ],
+        "properties": {
+          "stopNumber": {
+            "type": "string",
+            "description": "Unique identifier for the transit stop."
+          },
+          "stopName": {
+            "type": "string",
+            "description": "Name of the transit stop."
+          },
+          "stops": {
+            "type": "array",
+            "description": "List of scheduled stops at this transit stop.",
+            "items": {
+              "$ref": "#/components/schemas/TransitRoute"
+            }
+          }
+        }
+      },
+      "TransitRoute": {
+        "type": "object",
+        "required": [
+          "destination",
+          "routeName",
+          "routeCode",
+          "time"
+        ],
+        "properties": {
+          "destination": {
+            "type": "string",
+            "description": "Destination of the transit route."
+          },
+          "routeName": {
+            "type": "string",
+            "description": "Name of the transit route."
+          },
+          "routeCode": {
+            "type": "string",
+            "description": "Code of the transit route."
+          },
+          "time": {
+            "type": "integer",
+            "description": "Scheduled arrival time as a Unix timestamp."
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The HTTP status code"
+          },
+          "message": {
+            "type": "string",
+            "description": "The error"
+          }
+        }
+      },
+      "Problem": {
+        "type": "object",
+        "description": "An HTTP Problem Details object, as defined in IETF RFC 7807 (https://tools.ietf.org/html/rfc7807).",
+        "required": [
+          "title",
+          "status"
+        ],
+        "properties": {
+          "detail": {
+            "type": "string",
+            "description": "The details of the problem"
+          },
+          "status": {
+            "type": "integer",
+            "description": "The HTTP status code"
+          },
+          "title": {
+            "type": "string",
+            "description": "The type of error (text)"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of error (URL)"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "AccessToken": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
