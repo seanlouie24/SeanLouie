@@ -3,9 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sean Louie</title>
+    <title>Sean Louie | Software Developer</title>
+    <meta name="description" content="Sean Louie, 3rd year CS at SFU, full-stack developer in Vancouver. Portfolio and projects." />
+    <meta property="og:title" content="Sean Louie | Software Developer" />
+    <meta property="og:description" content="3rd year CS at SFU, full-stack developer in Vancouver. Portfolio and projects." />
+    <meta name="twitter:card" content="summary" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['"Syne"', 'system-ui', 'sans-serif'],
+              body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              surface: 'var(--color-surface)',
+              card: 'var(--color-card)',
+              border: 'var(--color-border)',
+              muted: 'var(--color-muted)',
+              accent: 'var(--color-accent)',
+              accentDim: 'var(--color-accent-dim)',
+            },
+          },
+        },
+      };
+    </script>
     <link rel="icon" type="image/png" href="public/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -13,242 +43,444 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <style>
+      :root {
+        --color-surface: #0e0c14;
+        --color-card: #16141e;
+        --color-border: #2a2738;
+        --color-muted: #7d7a8c;
+        --color-accent: #a78bfa;
+        --color-accent-dim: rgba(167, 139, 250, 0.15);
+        --color-text: #c4c1d0;
+        --color-text-strong: #ede9fe;
+        --grain-opacity: 0.03;
+      }
+      html.light {
+        --color-surface: #faf8fc;
+        --color-card: #ffffff;
+        --color-border: #e8e4f0;
+        --color-muted: #6b6580;
+        --color-accent: #6d28d9;
+        --color-accent-dim: rgba(109, 40, 217, 0.1);
+        --color-text: #433e52;
+        --color-text-strong: #1e1b24;
+        --grain-opacity: 0.04;
+      }
+      html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+      body { font-family: 'DM Sans', system-ui, sans-serif; }
+      .font-display { font-family: 'Syne', system-ui, sans-serif; }
+      .bg-grain { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); }
+      .hero-glow { background: radial-gradient(ellipse 80% 50% at 50% -20%, var(--color-accent-dim), transparent 60%); }
+      @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+      .animate-in { opacity: 0; transform: translateY(16px); }
+      .animate-in.visible { animation: fadeUp 0.5s ease forwards; }
+      .animate-in.delay-1 { animation-delay: 0.05s; }
+      .animate-in.delay-2 { animation-delay: 0.1s; }
+      .animate-in.delay-3 { animation-delay: 0.15s; }
+      *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+      .skip-link { position: absolute; top: -100px; left: 0.5rem; z-index: 100; padding: 0.5rem 1rem; background: var(--color-accent); color: var(--color-surface); font-weight: 600; border-radius: 0.5rem; transition: top 0.2s; }
+      .skip-link:focus { top: 0.5rem; }
+      #back-to-top { transition: opacity 0.2s, transform 0.2s; }
+      #back-to-top.hidden { opacity: 0; pointer-events: none; transform: translateY(8px); }
+      html.light .text-stone-50, html.light .text-stone-100 { color: #1c1917; }
+      html.light .text-stone-200, html.light .text-stone-300 { color: #44403c; }
+      html.light .text-stone-400 { color: #78716c; }
+      html.light .bg-surface\/80 { background-color: rgba(250, 248, 252, 0.92); }
+      #reading-progress { height: 3px; background: var(--color-accent); transform-origin: left; transition: transform 0.1s ease-out; }
+      .copy-btn.copied { color: var(--color-accent); }
+      @media print {
+        #reading-progress, #back-to-top, #theme-toggle, #share-page, #copy-email, .skip-link { display: none !important; }
+        body { background: #fff; }
+        .bg-grain { background-image: none !important; }
+        .hero-glow { background: none !important; }
+        a[href^="mailto:"]::after { content: " (" attr(href) ")"; font-size: 0.85em; opacity: 0.8; }
+      }
+    </style>
   </head>
-  <body class="bg-gray-900 text-gray-100 font-sans">
-    <header class="flex items-center justify-between max-w-6xl mx-auto px-6 py-4 border-b border-gray-700 sticky top-0 bg-gray-900 z-50">
-      <a href="/" class="text-xl font-bold tracking-wide hover:text-blue-400 transition">Sean L</a>
-      
-      <nav class="flex items-center space-x-6 text-sm font-medium">
-        <a href="#skills" class="px-3 py-2 rounded-lg hover:bg-gray-800 transition">Skills</a>
-        <a href="#projects" class="px-3 py-2 rounded-lg hover:bg-gray-800 transition">Projects</a>
-  
-        <a target="_blank" href="https://github.com/seanlouie24" class="text-xl hover:text-gray-400">
-          <i class="fa-brands fa-github"></i>
-        </a>
-        <a target="_blank" href="https://www.linkedin.com/in/sean-louie/" class="text-xl hover:text-blue-400">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
+  <body class="bg-surface text-stone-200 font-body antialiased bg-grain min-h-screen relative">
+    <div id="reading-progress" class="fixed top-0 left-0 z-[60] w-full" style="transform: scaleX(0);"></div>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header class="flex items-center justify-between max-w-4xl mx-auto px-5 sm:px-8 py-5 border-b border-border/80 sticky top-0 bg-surface/80 backdrop-blur-sm z-50">
+      <a href="/" class="font-display text-lg font-semibold tracking-tight text-stone-100 hover:text-accent transition-colors">Sean L</a>
+      <nav class="flex items-center gap-1 sm:gap-2 text-sm">
+        <a href="#skills" class="px-3 py-2 rounded-md text-muted hover:text-stone-200 hover:bg-accentDim transition-colors">Skills</a>
+        <a href="#projects" class="px-3 py-2 rounded-md text-muted hover:text-stone-200 hover:bg-accentDim transition-colors">Projects</a>
+        <a href="#contact" class="px-3 py-2 rounded-md text-muted hover:text-stone-200 hover:bg-accentDim transition-colors">Contact</a>
+        <a target="_blank" href="https://github.com/seanlouie24" class="p-2 rounded-md text-muted hover:text-stone-200 transition-colors" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a target="_blank" href="https://www.linkedin.com/in/sean-louie/" class="p-2 rounded-md text-muted hover:text-accent transition-colors" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <button type="button" id="share-page" class="p-2 rounded-md text-muted hover:text-stone-200 hover:bg-accentDim transition-colors" aria-label="Copy page link" title="Copy link"><i class="fa-solid fa-link"></i></button>
+        <button type="button" id="theme-toggle" class="p-2 rounded-md text-muted hover:text-stone-200 hover:bg-accentDim transition-colors" aria-label="Toggle light/dark mode"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
       </nav>
     </header>
-  
-    <main class="max-w-6xl mx-auto px-6">
-      <section class="text-center py-16">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-white">Sean Louie</h1>
-        <p class="mt-2 text-lg text-gray-400">Software Developer</p>
-        <p class="mt-4 max-w-2xl mx-auto text-gray-300">
-          A 3rd year computing science student at Simon Fraser University specializing in full-stack web development. Based in Vancouver, I love to play basketball and weightlift.
+
+    <main id="main" class="max-w-4xl mx-auto px-5 sm:px-8">
+      <section class="pt-14 pb-12 sm:pt-20 sm:pb-16 relative hero-glow">
+        <p class="font-display text-sm font-medium tracking-wider text-accent uppercase mb-3 animate-in">Software Developer</p>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-50 tracking-tight leading-[1.1] animate-in delay-1">Sean Louie</h1>
+        <p class="mt-5 max-w-xl text-stone-400 leading-relaxed text-[1.05rem] animate-in delay-2">
+          3rd year computing science at Simon Fraser University, full-stack and Vancouver-based. I build things with code and spend the rest of my time on the court or in the gym.
         </p>
-        <div id="skills-nav" class="mt-6 flex flex-wrap justify-center gap-4">
+        <div class="mt-8 flex flex-wrap gap-3 animate-in delay-3">
           <a
             href="mailto:sdlouie24@gmail.com"
-            class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-sm hover:bg-blue-500 hover:scale-105 transition"
+            class="inline-flex items-center gap-2 px-4 py-2.5 bg-accent text-surface font-medium rounded-lg hover:opacity-90 transition-opacity"
             >Email me</a
           >
           <a
             target="_blank"
             href="https://github.com/seanlouie24"
-            class="px-5 py-2 border border-gray-600 text-gray-200 rounded-lg hover:bg-gray-800 hover:scale-105 transition"
+            class="inline-flex items-center gap-2 px-4 py-2.5 border border-border text-stone-300 rounded-lg hover:border-accent/50 hover:text-stone-100 transition-colors"
             >GitHub</a
           >
           <a
             target="_blank"
             href="https://www.linkedin.com/in/sean-louie/"
-            class="px-5 py-2 border border-gray-600 text-gray-200 rounded-lg hover:bg-gray-800 hover:scale-105 transition"
+            class="inline-flex items-center gap-2 px-4 py-2.5 border border-border text-stone-300 rounded-lg hover:border-accent/50 hover:text-stone-100 transition-colors"
             >LinkedIn</a
           >
         </div>
       </section>
 
-      <section id="skills" class="py-12">
-        <h2 class="text-3xl font-bold text-center mb-8 text-white">Technical Skills
-          <div class="mt-2 mx-auto w-16 h-1 bg-blue-500 rounded-full"></div>
-        </h2>
-        <div class="flex flex-wrap gap-3 justify-center max-w-4xl mx-auto">
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">Python</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">Java</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">C++</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">TypeScript</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">Spring Boot</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">Node.js</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">PostgreSQL</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">MongoDB</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">Supabase</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">React</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">WebSockets</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">FastAPI</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">Git</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">Linux</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">YOLOv11</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">PyTorch</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">TensorFlow</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:border-blue-500 transition">Scikit-learn</span>
+      <section id="currently" class="py-10 border-t border-border/60 animate-in" data-animate>
+        <h2 class="font-display text-2xl font-semibold text-stone-100 mb-4">Currently</h2>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 p-5 rounded-2xl bg-card border border-border">
+          <p class="text-stone-400 leading-relaxed">
+            <span class="text-stone-200">Open to internships and co-ops</span> in software engineering. Finishing my degree at SFU, shipping side projects, and always learning something new. Lately it's been systems design and ML in production.
+          </p>
+          <a href="#contact" class="shrink-0 inline-flex items-center gap-2 text-accent font-medium hover:opacity-90 transition-opacity sm:ml-auto">
+            Get in touch <i class="fa-solid fa-arrow-right text-sm"></i>
+          </a>
         </div>
       </section>
 
-      <section id="projects" class="py-12">
-        <h2 class="text-3xl font-bold text-center mb-8 text-white">Projects
-          <div class="mt-2 mx-auto w-24 h-1 bg-blue-500 rounded-full"></div>
-        </h2>
-        <div class="grid gap-8 md:grid-cols-2">
+      <section id="skills" class="py-16 border-t border-border/60 animate-in" data-animate>
+        <h2 class="font-display text-2xl font-semibold text-stone-100 mb-6">Technical Skills</h2>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">Python</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">Java</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">C++</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">TypeScript</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">Spring Boot</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">Node.js</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">PostgreSQL</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">MongoDB</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">Supabase</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">React</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">WebSockets</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">FastAPI</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">Git</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">Linux</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">YOLOv11</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">PyTorch</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">TensorFlow</span>
+          <span class="px-3 py-1.5 bg-card border border-border rounded-md text-sm text-stone-300 hover:border-accent/40 hover:text-stone-200 transition-colors">Scikit-learn</span>
+        </div>
+      </section>
+
+      <section id="projects" class="py-16 border-t border-border/60 animate-in" data-animate>
+        <h2 class="font-display text-2xl font-semibold text-stone-100 mb-8">Projects</h2>
+        <div class="grid gap-6 sm:grid-cols-2">
 
           <!-- ViperProtection -->
-          <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:scale-[1.02] hover:border-green-500 transition-transform duration-300">
-            <img src="public/ViperProtection.png" alt="ViperProtection Thumbnail" class="h-48 w-full object-cover">
-            <div class="p-6 flex flex-col justify-between flex-1">
-              <div>
-                <div class="flex items-center gap-2 flex-wrap mb-1">
-                  <p class="text-sm text-gray-400">Feb 28 – Mar 1, 2026</p>
-                  <span class="px-2 py-0.5 text-xs font-bold bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-full">🏆 Best Overall Hack</span>
-                  <span class="px-2 py-0.5 text-xs font-bold bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-full">🏆 Best Use of DigitalOcean</span>
-                </div>
-                <h4 class="text-xl font-semibold mt-2 text-white">ViperProtection</h4>
-                <div class="flex flex-wrap gap-2 mt-3">
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">React</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">FastAPI</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">PostgreSQL</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">DigitalOcean</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">PyTorch</span>
-                </div>
-                <p class="mt-4 text-gray-300 leading-relaxed">
-                  A full-stack tool built at Mountain Madness 2026 that lets artists protect their images from AI training scrapers by injecting invisible adversarial perturbations. These are undetectable to humans but corrupting to any model that tries to learn from the image.
-                </p>
+          <article class="group bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:border-accent/30 transition-colors duration-200 animate-in" data-animate>
+            <div class="aspect-video w-full overflow-hidden bg-stone-800">
+              <img src="public/ViperProtection.png" alt="ViperProtection" class="h-full w-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <div class="flex items-center gap-2 flex-wrap mb-2">
+                <time class="text-xs text-muted">Feb 28 – Mar 1, 2026</time>
+                <span class="px-2 py-0.5 text-xs font-medium bg-accentDim text-accent rounded-full border border-accent/30">Best Overall Hack</span>
+                <span class="px-2 py-0.5 text-xs font-medium bg-accentDim text-accent rounded-full border border-accent/20">Best Use of DigitalOcean</span>
               </div>
-              <div class="mt-6 flex gap-4">
-                <a target="_blank" href="https://lnkd.in/gKQEFHCV" class="text-blue-400 hover:text-blue-300 font-medium transition">Demo</a>
-                <a target="_blank" href="https://lnkd.in/gQndZ7Ng" class="text-blue-400 hover:text-blue-300 font-medium transition">GitHub</a>
+              <h3 class="font-display text-lg font-semibold text-stone-50">ViperProtection</h3>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">React</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">FastAPI</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">PostgreSQL</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">DigitalOcean</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">PyTorch</span>
+              </div>
+              <p class="mt-3 text-sm text-stone-400 leading-relaxed flex-1">
+                A full-stack tool built at Mountain Madness 2026 that lets artists protect their images from AI training scrapers by injecting invisible adversarial perturbations. These are undetectable to humans but corrupting to any model that tries to learn from the image.
+              </p>
+              <div class="mt-4 flex gap-4 text-sm">
+                <a target="_blank" href="https://lnkd.in/gKQEFHCV" class="text-accent hover:opacity-90 font-medium transition-colors">Demo</a>
+                <a target="_blank" href="https://lnkd.in/gQndZ7Ng" class="text-accent hover:opacity-90 font-medium transition-colors">GitHub</a>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:scale-[1.02] hover:border-blue-500 transition-transform duration-300">
-            <img src="public/Predictive_Thumbnail.png" alt="Traffic Monitor Thumbnail" class="h-48 w-full object-cover">
-            <div class="p-6 flex flex-col justify-between flex-1">
-              <div>
-                <p class="text-sm text-gray-400">January 2026</p>
-                <h4 class="text-xl font-semibold mt-2 text-white">Predictive Traffic & Hazard Monitor</h4>
-                <div class="flex flex-wrap gap-2 mt-3">
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">YOLOv11</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Spring Boot</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">WebSockets</span>
-                </div>
-                <p class="mt-4 text-gray-300 leading-relaxed">
-                  An intelligent urban safety platform analyzing live camera feeds with <strong>YOLOv11</strong> to identify accidents and debris in real time.
-                </p>
+          <article class="group bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:border-accent/30 transition-colors duration-200 animate-in" data-animate>
+            <div class="aspect-video w-full overflow-hidden bg-stone-800">
+              <img src="public/Predictive_Thumbnail.png" alt="Predictive Traffic & Hazard Monitor" class="h-full w-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <time class="text-xs text-muted mb-2 block">January 2026</time>
+              <h3 class="font-display text-lg font-semibold text-stone-50">Predictive Traffic & Hazard Monitor</h3>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">YOLOv11</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">Spring Boot</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">WebSockets</span>
               </div>
-              <div class="mt-6 flex gap-4">
-                <a target="_blank" href="https://huggingface.co/spaces/sdl11/intersection-hazard-api" class="text-blue-400 hover:text-blue-300 font-medium transition">HuggingFace</a>
-                <a target="_blank" href="https://github.com/TelusHackathon2026/rainCity" class="text-blue-400 hover:text-blue-300 font-medium transition">GitHub</a>
+              <p class="mt-3 text-sm text-stone-400 leading-relaxed flex-1">
+                An intelligent urban safety platform analyzing live camera feeds with <strong class="text-stone-300">YOLOv11</strong> to identify accidents and debris in real time.
+              </p>
+              <div class="mt-4 flex gap-4 text-sm">
+                <a target="_blank" href="https://huggingface.co/spaces/sdl11/intersection-hazard-api" class="text-accent hover:opacity-90 font-medium transition-colors">HuggingFace</a>
+                <a target="_blank" href="https://github.com/TelusHackathon2026/rainCity" class="text-accent hover:opacity-90 font-medium transition-colors">GitHub</a>
               </div>
             </div>
-          </div>
-          
-          <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:scale-[1.02] hover:border-blue-500 transition-transform duration-300">
-            <img src="public/WasteClassifier_Thumbnail.png" alt="Waste Classifier Thumbnail" class="h-48 w-full object-cover">
-            <div class="p-6 flex flex-col justify-between flex-1">
-              <div>
-                <p class="text-sm text-gray-400">Sept 2025 - Dec 2025</p>
-                <h4 class="text-xl font-semibold mt-2 text-white">Multiclass Waste Classifier</h4>
-                <div class="flex flex-wrap gap-2 mt-3">
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Python</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">PyTorch</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">CNN</span>
-                </div>
-                <p class="mt-4 text-gray-300">AI-powered classification system categorizing waste into garbage, compost, paper, or recycling using deep learning.</p>
-              </div>
-              <div class="mt-4 flex gap-4">
-                <a target="_blank" href="https://waste-classifier-theta.vercel.app/" class="text-blue-400 hover:underline">Live</a>
-                <a target="_blank" href="#" class="text-blue-400 hover:underline">README</a>
-              </div>
-            </div>
-          </div>
+          </article>
 
-          <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:scale-[1.02] hover:border-blue-500 transition-transform duration-300">
-            <img src="public/Snap2Macros.png" alt="Snap2Macros Thumbnail" class="h-48 w-full object-cover">
-            <div class="p-6 flex flex-col justify-between flex-1">
-              <div>
-                <p class="text-sm text-gray-400">August 2025 - Present</p>
-                <h4 class="text-xl font-semibold mt-2 text-white">Snap2Macros</h4>
-                <div class="flex flex-wrap gap-2 mt-3">
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Next.js</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">PostgreSQL</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Vision API</span>
-                </div>
-                <p class="mt-4 text-gray-300">Full-stack web app for logging meals via AI-based photo detection and calorie tracking.</p>
+          <article class="group bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:border-accent/30 transition-colors duration-200 animate-in" data-animate>
+            <div class="aspect-video w-full overflow-hidden bg-stone-800">
+              <img src="public/WasteClassifier_Thumbnail.png" alt="Multiclass Waste Classifier" class="h-full w-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <time class="text-xs text-muted mb-2 block">Sept – Dec 2025</time>
+              <h3 class="font-display text-lg font-semibold text-stone-50">Multiclass Waste Classifier</h3>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">Python</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">PyTorch</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">CNN</span>
               </div>
-              <div class="mt-4 flex gap-4">
-                <a target="_blank" href="https://snap2macros.vercel.app/login" class="text-blue-400 hover:underline">Live</a>
-                <a target="_blank" href="https://github.com/seanlouie24/snap2macros" class="text-blue-400 hover:underline">GitHub</a>
+              <p class="mt-3 text-sm text-stone-400 leading-relaxed flex-1">AI-powered classification system categorizing waste into garbage, compost, paper, or recycling using deep learning.</p>
+              <div class="mt-4 flex gap-4 text-sm">
+                <a target="_blank" href="https://waste-classifier-theta.vercel.app/" class="text-accent hover:opacity-90 font-medium transition-colors">Live</a>
+                <a target="_blank" href="#" class="text-accent hover:opacity-90 font-medium transition-colors">README</a>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:scale-[1.02] hover:border-blue-500 transition-transform duration-300">
-            <img src="public/RepIt_Thumbnail.png" alt="RepIt Thumbnail" class="h-48 w-full object-cover">
-            <div class="p-6 flex flex-col justify-between flex-1">
-              <div>
-                <p class="text-sm text-gray-400">July 2025 - August 2025</p>
-                <h4 class="text-xl font-semibold mt-2 text-white">RepIt</h4>
-                <div class="flex flex-wrap gap-2 mt-3">
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">MongoDB</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">React.js</span>
-                </div>
-                <p class="mt-4 text-gray-300">Workout management application to log sessions, track progress, and review exercise history.</p>
+          <article class="group bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:border-accent/30 transition-colors duration-200 animate-in" data-animate>
+            <div class="aspect-video w-full overflow-hidden bg-stone-800">
+              <img src="public/Snap2Macros.png" alt="Snap2Macros" class="h-full w-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <time class="text-xs text-muted mb-2 block">Aug 2025 – Present</time>
+              <h3 class="font-display text-lg font-semibold text-stone-50">Snap2Macros</h3>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">Next.js</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">PostgreSQL</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">Vision API</span>
               </div>
-              <div class="mt-4 flex gap-4">
-                <a target="_blank" href="https://repitapp.vercel.app/" class="text-blue-400 hover:underline">Live</a>
-                <a target="_blank" href="https://github.com/seanlouie24/RepIt" class="text-blue-400 hover:underline">GitHub</a>
+              <p class="mt-3 text-sm text-stone-400 leading-relaxed flex-1">Full-stack web app for logging meals via AI-based photo detection and calorie tracking.</p>
+              <div class="mt-4 flex gap-4 text-sm">
+                <a target="_blank" href="https://snap2macros.vercel.app/login" class="text-accent hover:opacity-90 font-medium transition-colors">Live</a>
+                <a target="_blank" href="https://github.com/seanlouie24/snap2macros" class="text-accent hover:opacity-90 font-medium transition-colors">GitHub</a>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:scale-[1.02] hover:border-blue-500 transition-transform duration-300">
-            <img src="public/SFU_Hub_Thumbnail.png" alt="SFU_Hub_Thumbnail" class="h-48 w-full object-cover">
-            <div class="p-6 flex flex-col justify-between flex-1">
-              <div>
-                <p class="text-sm text-gray-400">September 2024 - December 2024</p>
-                <h4 class="text-xl font-semibold mt-2 text-white">SFU Hub</h4>
-                <div class="flex flex-wrap gap-2 mt-3">
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">TypeScript</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Prisma + SQLite</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Unit Tests</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Agile</span>
-                </div>
-                <p class="mt-4 text-gray-300">SFU Hub is your one-stop destination for everything SFU, bringing together essential information and resources in one convenient place.</p>
+          <article class="group bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:border-accent/30 transition-colors duration-200 animate-in" data-animate>
+            <div class="aspect-video w-full overflow-hidden bg-stone-800">
+              <img src="public/RepIt_Thumbnail.png" alt="RepIt" class="h-full w-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <time class="text-xs text-muted mb-2 block">July – Aug 2025</time>
+              <h3 class="font-display text-lg font-semibold text-stone-50">RepIt</h3>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">MongoDB</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">React</span>
               </div>
-              <div class="mt-4 flex gap-4">
-                <a target="_blank" href="https://sfuhub.ca/" class="text-blue-400 hover:underline">Live</a>
-                <a target="_blank" href="SFU-HUB-CMPT276-main.zip" download class="text-blue-400 hover:underline">ProjectFiles</a>
-                <a target="_blank" href="SFU-HUB-CMPT276-main/" class="text-blue-400 hover:underline">README</a>
+              <p class="mt-3 text-sm text-stone-400 leading-relaxed flex-1">Workout management application to log sessions, track progress, and review exercise history.</p>
+              <div class="mt-4 flex gap-4 text-sm">
+                <a target="_blank" href="https://repitapp.vercel.app/" class="text-accent hover:opacity-90 font-medium transition-colors">Live</a>
+                <a target="_blank" href="https://github.com/seanlouie24/RepIt" class="text-accent hover:opacity-90 font-medium transition-colors">GitHub</a>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:scale-[1.02] hover:border-blue-500 transition-transform duration-300">
-            <img src="public/Pickup_Thumbnail.png" alt="Pickup_Thumbnail" class="h-48 w-full object-cover">
-            <div class="p-6 flex flex-col justify-between flex-1">
-              <div>
-                <p class="text-sm text-gray-400">January 2024</p>
-                <h4 class="text-xl font-semibold mt-2 text-white">PickUp</h4>
-                <div class="flex flex-wrap gap-2 mt-3">
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">React</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Google Maps API</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">Chakra UI</span>
-                  <span class="px-3 py-1 text-sm bg-gray-900 border border-gray-700 rounded-lg">JavaScript</span>
-                </div>
-                <p class="mt-4 text-gray-300">Pickup makes it easy for students on the UBC Vancouver campus to discover and join local pickup sporting events, through an interactive web app.</p>
+          <article class="group bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:border-accent/30 transition-colors duration-200 animate-in" data-animate>
+            <div class="aspect-video w-full overflow-hidden bg-stone-800">
+              <img src="public/SFU_Hub_Thumbnail.png" alt="SFU Hub" class="h-full w-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <time class="text-xs text-muted mb-2 block">Sept – Dec 2024</time>
+              <h3 class="font-display text-lg font-semibold text-stone-50">SFU Hub</h3>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">TypeScript</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">Prisma</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">Agile</span>
               </div>
-              <div class="mt-4 flex gap-4">
-                <a target="_blank" href="https://github.com/MatthewAnder/nwhacks-project" class="text-blue-400 hover:underline">GitHub</a>
+              <p class="mt-3 text-sm text-stone-400 leading-relaxed flex-1">SFU Hub is your one-stop destination for everything SFU, bringing together essential information and resources in one convenient place.</p>
+              <div class="mt-4 flex gap-4 text-sm">
+                <a target="_blank" href="https://sfuhub.ca/" class="text-accent hover:opacity-90 font-medium transition-colors">Live</a>
+                <a target="_blank" href="SFU-HUB-CMPT276-main.zip" download class="text-accent hover:opacity-90 font-medium transition-colors">ProjectFiles</a>
+                <a target="_blank" href="SFU-HUB-CMPT276-main/" class="text-accent hover:opacity-90 font-medium transition-colors">README</a>
               </div>
             </div>
-          </div>
+          </article>
+
+          <article class="group bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:border-accent/30 transition-colors duration-200 animate-in" data-animate>
+            <div class="aspect-video w-full overflow-hidden bg-stone-800">
+              <img src="public/Pickup_Thumbnail.png" alt="PickUp" class="h-full w-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <time class="text-xs text-muted mb-2 block">January 2024</time>
+              <h3 class="font-display text-lg font-semibold text-stone-50">PickUp</h3>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">React</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">Google Maps</span>
+                <span class="px-2 py-0.5 text-xs bg-surface border border-border rounded text-stone-400">Chakra UI</span>
+              </div>
+              <p class="mt-3 text-sm text-stone-400 leading-relaxed flex-1">Pickup makes it easy for students on the UBC Vancouver campus to discover and join local pickup sporting events, through an interactive web app.</p>
+              <div class="mt-4 flex gap-4 text-sm">
+                <a target="_blank" href="https://github.com/MatthewAnder/nwhacks-project" class="text-accent hover:opacity-90 font-medium transition-colors">GitHub</a>
+              </div>
+            </div>
+          </article>
 
         </div>
       </section>
 
-    <footer class="mt-12 py-6 border-t border-gray-700 text-center text-sm text-gray-400">
-      <p>By <span class="font-semibold text-gray-200">Sean Louie</span>. Contact: <a href="mailto:sdlouie24@gmail.com" class="text-blue-400 hover:underline">sdlouie24@gmail.com</a></p>
+      <section id="contact" class="py-16 border-t border-border/60 animate-in" data-animate>
+        <h2 class="font-display text-2xl font-semibold text-stone-100 mb-4">Contact</h2>
+        <p class="text-stone-400 max-w-lg mb-6">
+          Have a project in mind or want to chat? I’m happy to connect. Send an email or reach out on LinkedIn.
+        </p>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="mailto:sdlouie24@gmail.com" class="inline-flex items-center gap-2 px-4 py-2.5 bg-accent text-surface font-medium rounded-lg hover:opacity-90 transition-opacity"><i class="fa-solid fa-envelope"></i> sdlouie24@gmail.com</a>
+          <button type="button" id="copy-email" class="inline-flex items-center gap-2 px-3 py-2.5 border border-border text-stone-300 rounded-lg hover:border-accent/50 hover:text-stone-100 transition-colors text-sm copy-btn" title="Copy email"><i class="fa-regular fa-copy"></i> <span id="copy-email-label">Copy</span></button>
+          <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/sean-louie/" class="inline-flex items-center gap-2 px-4 py-2.5 border border-border text-stone-300 rounded-lg hover:border-accent/50 hover:text-stone-100 transition-colors"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        </div>
+      </section>
+
+    <footer class="mt-16 pt-8 pb-12 border-t border-border/60 text-center text-sm text-muted">
+      <p><span class="font-medium text-stone-300">Sean Louie</span> · <a href="mailto:sdlouie24@gmail.com" class="text-accent hover:opacity-90 transition-colors">sdlouie24@gmail.com</a></p>
+      <p class="mt-2 text-xs opacity-80">· Last updated March 2025</p>
     </footer>
-  </main>
-</body>
+    </main>
+
+    <a href="#main" id="back-to-top" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-card border border-border text-stone-300 hover:text-accent hover:border-accent/50 transition-colors hidden" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <script>
+      (function () {
+        var themeKey = 'portfolio-theme';
+        var html = document.documentElement;
+        function setTheme(isLight) {
+          if (isLight) {
+            html.classList.add('light');
+            document.querySelector('#theme-toggle i').className = 'fa-solid fa-sun';
+          } else {
+            html.classList.remove('light');
+            document.querySelector('#theme-toggle i').className = 'fa-solid fa-moon';
+          }
+          try { localStorage.setItem(themeKey, isLight ? 'light' : 'dark'); } catch (e) {}
+        }
+        var stored = null;
+        try { stored = localStorage.getItem(themeKey); } catch (e) {}
+        var prefersLight = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (stored === 'light' || (!stored && prefersLight)) setTheme(true);
+        else setTheme(false);
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+          setTheme(!html.classList.contains('light'));
+        });
+      })();
+
+      (function () {
+        var hero = document.querySelector('.hero-glow');
+        if (hero) {
+          hero.querySelectorAll('.animate-in').forEach(function (el) { el.classList.add('visible'); });
+        }
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add('visible');
+              var children = entry.target.querySelectorAll('[data-animate]');
+              children.forEach(function (c, i) {
+                c.style.animationDelay = (i * 0.06) + 's';
+                c.classList.add('visible');
+              });
+            });
+          },
+          { rootMargin: '0px 0px -80px 0px', threshold: 0.05 }
+        );
+        document.querySelectorAll('section[data-animate]').forEach(function (section) {
+          observer.observe(section);
+        });
+      })();
+
+      (function () {
+        var btn = document.getElementById('back-to-top');
+        if (!btn) return;
+        function update() {
+          if (window.scrollY > 400) btn.classList.remove('hidden');
+          else btn.classList.add('hidden');
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+      })();
+
+      (function () {
+        var bar = document.getElementById('reading-progress');
+        if (!bar) return;
+        function update() {
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          var pct = docHeight <= 0 ? 0 : window.scrollY / docHeight;
+          bar.style.transform = 'scaleX(' + pct + ')';
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+      })();
+
+      (function () {
+        var btn = document.getElementById('copy-email');
+        var label = document.getElementById('copy-email-label');
+        var email = 'sdlouie24@gmail.com';
+        if (!btn || !label) return;
+        btn.addEventListener('click', function () {
+          navigator.clipboard.writeText(email).then(function () {
+            label.textContent = 'Copied!';
+            btn.classList.add('copied');
+            var icon = btn.querySelector('i');
+            if (icon) icon.className = 'fa-solid fa-check';
+            setTimeout(function () {
+              label.textContent = 'Copy';
+              btn.classList.remove('copied');
+              if (icon) icon.className = 'fa-regular fa-copy';
+            }, 2000);
+          });
+        });
+      })();
+
+      (function () {
+        var btn = document.getElementById('share-page');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var url = window.location.href;
+          navigator.clipboard.writeText(url).then(function () {
+            var icon = btn.querySelector('i');
+            if (icon) icon.className = 'fa-solid fa-check';
+            btn.setAttribute('aria-label', 'Link copied');
+            btn.setAttribute('title', 'Link copied!');
+            setTimeout(function () {
+              if (icon) icon.className = 'fa-solid fa-link';
+              btn.setAttribute('aria-label', 'Copy page link');
+              btn.setAttribute('title', 'Copy link');
+            }, 2000);
+          });
+        });
+      })();
+
+      (function () {
+        var el = document.getElementById('reading-time');
+        if (!el) return;
+        var text = document.body.innerText || '';
+        var words = text.trim().split(/\s+/).filter(Boolean).length;
+        var mins = Math.max(1, Math.round(words / 200));
+        el.textContent = '~' + mins + ' min read';
+      })();
+
+      (function () {
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      })();
+    </script>
+  </body>
 </html>
